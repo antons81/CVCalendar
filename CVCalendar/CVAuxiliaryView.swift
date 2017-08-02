@@ -25,7 +25,7 @@ public final class CVAuxiliaryView: UIView {
     public let defaultFillColor = UIColor.colorFromCode(0xe74c3c)
 
     fileprivate var radius: CGFloat {
-        return (min(frame.height, frame.width) - 10) / 2
+        return (min(frame.height, frame.width)) / 2
     }
 
     public unowned let dayView: DayView
@@ -92,7 +92,7 @@ extension CVAuxiliaryView {
     func circlePath() -> UIBezierPath {
         let arcCenter = CGPoint(x: frame.width / 2, y: frame.height / 2)
         let startAngle = CGFloat(0)
-        let endAngle = CGFloat(Double.pi * 2.0)
+        let endAngle = CGFloat(M_PI * 2.0)
         let clockwise = true
 
         let path = UIBezierPath(arcCenter: arcCenter, radius: radius,
@@ -139,8 +139,10 @@ extension CVAuxiliaryView {
         let appearance = dayView.calendarView.appearance
         let offset = appearance?.spaceBetweenDayViews!
 
+        debugPrint("offset = \(String(describing: offset))")
+
         let path = UIBezierPath(rect: CGRect(x: 0 - offset!, y: midY - radius,
-            width: bounds.width + offset! / 2, height: radius * 2))
+            width: bounds.width + offset! / 2, height: radius))
 
         return path
     }
