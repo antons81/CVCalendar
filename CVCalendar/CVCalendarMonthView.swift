@@ -26,9 +26,6 @@ public final class CVCalendarMonthView: UIView {
         return calendarView.touchController
     }
 
-    var allowScrollToPreviousMonth = true
-    var allowScrollToNextMonth = true
-    
     // MARK: - Public properties
 
     public weak var calendarView: CVCalendarView!
@@ -196,7 +193,7 @@ extension CVCalendarMonthView {
         for object in objects {
             if object == nil {
                 if collapsing {
-                    fatalError("Object { \(String(describing: object)) } must not be nil!")
+                    fatalError("Object { \(object) } must not be nil!")
                 } else {
                     return
                 }
